@@ -1,12 +1,31 @@
+ ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos
 
-Hito 1: Elevator Pitch — ZonaPark
-Proyecto: ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos.
-¿Qué es?
-Es un sistema web que permite administrar las operaciones de un parqueadero, facilitando el registro de vehículos, el control de espacios disponibles y ocupados, y el cálculo automático del tiempo de estacionamiento y su cobro.
-¿Para quién es?
-Está dirigido a los administradores y empleados de parqueaderos, así como a los clientes que necesitan consultar su historial de pagos y el tiempo que sus vehículos estuvieron estacionados.
-¿Qué problema resuelve?
-Busca reducir los errores en el registro de vehículos y el cálculo de tarifas, disminuir las demoras en la atención y mejorar el control de los espacios, evitando depender de registros manuales en cuadernos u hojas de cálculo.
+## Descripción del proyecto
+
+ZonaPark es un sistema web diseñado para facilitar la gestión y administración de parqueaderos. Permite registrar vehículos, controlar espacios disponibles y ocupados, registrar entradas y salidas, calcular el tiempo de estacionamiento y determinar el valor a pagar.
+
+El proyecto busca reducir los errores de los registros manuales, agilizar la atención y mejorar el control de la información del parqueadero.
+
+## Hito 1: Elevator Pitch
+
+### ¿Qué es?
+
+ZonaPark es un sistema web que permite administrar las operaciones de un parqueadero mediante el registro de vehículos, el control de espacios y el cálculo automático del tiempo de estacionamiento y su cobro.
+
+### ¿Para quién es?
+
+Está dirigido a administradores y empleados de parqueaderos, así como a clientes que necesitan consultar su historial de pagos y el tiempo de estacionamiento de sus vehículos.
+
+### ¿Qué problema resuelve?
+
+Busca reducir los errores en el registro de vehículos y en el cálculo de tarifas, disminuir las demoras en la atención y mejorar el control de los espacios disponibles y ocupados, evitando depender de cuadernos u hojas de cálculo.
+
+### Entidades principales
+
+- **Usuario:** representa a los administradores, empleados y clientes del sistema.
+- **Vehículo:** almacena información como la placa y el tipo de vehículo.
+- **Espacio:** representa los espacios del parqueadero y su estado.
+- **RegistroEstacionamiento:** almacena la información de entrada, salida, tiempo de permanencia y valor del estacionamiento.
 
 
 
