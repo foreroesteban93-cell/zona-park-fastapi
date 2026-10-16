@@ -1,16 +1,36 @@
- ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos
+# 🚀 ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos
 
-## Descripción del proyecto
 
-ZonaPark es un sistema web diseñado para facilitar la gestión y administración de parqueaderos. Permite registrar vehículos, controlar espacios disponibles y ocupados, registrar entradas y salidas, calcular el tiempo de estacionamiento y determinar el valor a pagar.
+## 📖 Descripción del proyecto
+
+ZonaPark es un sistema web diseñado para facilitar la gestión y administración de parqueaderos. Permite registrar vehículos, controlar los espacios disponibles y ocupados, registrar entradas y salidas, calcular el tiempo de estacionamiento y determinar el valor a pagar.
 
 El proyecto busca reducir los errores de los registros manuales, agilizar la atención y mejorar el control de la información del parqueadero.
 
-## Hito 1: Elevator Pitch
+Está dirigido a administradores, empleados y clientes. Entre las funcionalidades contempladas se encuentran la autenticación de usuarios, la gestión de vehículos y espacios, el cálculo de tarifas, el historial de estacionamiento y la generación de reportes.
+
+## 🎥 Video de presentación
+
+**Enlace al video (máximo 5 minutos):** falta link
+
+> Reemplazar el enlace cuando el video esté publicado y tenga permisos de visualización.
+
+## 👥 Equipo de desarrollo
+
+| Integrante | Rol inicial | GitHub |
+|---|---|---|
+| Oscar Jairo Álvarez López | Base de datos | [@OscarAlvarez28](https://github.com/OscarAlvarez28) |
+| Esteban Forero Deossa | Líder / Coordinación | [@foreroesteban93-cell](https://github.com/foreroesteban93-cell) |
+| Mateo Vargas Martínez | Frontend | [@mateovm345-netize](https://github.com/mateovm345-netize) |
+| Adrián Alejandro Velázquez Petro | Backend / API | [@adrianvp423-bot](https://github.com/adrianvp423-bot) |
+
+Los roles corresponden a la distribución inicial propuesta en la documentación del proyecto.
+
+## 🎯 Hito 1: Elevator Pitch
 
 ### ¿Qué es?
 
-ZonaPark es un sistema web que permite administrar las operaciones de un parqueadero mediante el registro de vehículos, el control de espacios y el cálculo automático del tiempo de estacionamiento y su cobro.
+ZonaPark es un sistema web que permite administrar las operaciones de un parqueadero mediante el registro de vehículos, el control de espacios y el cálculo del tiempo de estacionamiento y su cobro.
 
 ### ¿Para quién es?
 
@@ -25,11 +45,11 @@ Busca reducir los errores en el registro de vehículos y en el cálculo de tarif
 - **Usuario:** representa a los administradores, empleados y clientes del sistema.
 - **Vehículo:** almacena información como la placa y el tipo de vehículo.
 - **Espacio:** representa los espacios del parqueadero y su estado.
-- **RegistroEstacionamiento:** almacena la información de entrada, salida, tiempo de permanencia y valor del estacionamiento.
+- **RegistroEstacionamiento:** almacena la información de entrada, salida y valor del estacionamiento.
 
+## 🗃️ Hito 2: Diagrama Entidad-Relación
 
-
-Hito 2 # Diagrama Entidad-Relación - ZonaPark
+El modelo inicial contiene cuatro entidades principales y sus relaciones.
 
 ```mermaid
 erDiagram
@@ -67,9 +87,15 @@ erDiagram
     }
 ```
 
-## Hito 3: Diseño de Endpoints REST
+### Relaciones principales
 
-La API de ZonaPark utilizará el prefijo `/api/v1` y seguirá las buenas prácticas REST, utilizando sustantivos, nombres plurales, rutas con kebab-case y métodos HTTP según la operación.
+- Un usuario puede registrar varios vehículos.
+- Un vehículo puede tener varios registros de estacionamiento.
+- Un espacio puede estar asociado a varios registros a lo largo del tiempo.
+
+## 🔌 Hito 3: Diseño de Endpoints REST
+
+La API de ZonaPark utilizará el prefijo `/api/v1` y seguirá las buenas prácticas REST, utilizando sustantivos, nombres plurales y métodos HTTP según la operación.
 
 ### 1. Endpoints de Usuarios
 
@@ -113,3 +139,53 @@ La API de ZonaPark utilizará el prefijo `/api/v1` y seguirá las buenas prácti
 | PATCH | `/api/v1/registros-estacionamiento/{id}` | Registrar la salida y calcular el cobro | `{"fecha_salida":"2026-10-16T10:30:00"}` | 200 OK |
 | DELETE | `/api/v1/registros-estacionamiento/{id}` | Eliminar un registro si las reglas lo permiten | N/A | 204 No Content |
 | GET | `/api/v1/vehiculos/{id}/registros-estacionamiento` | Consultar el historial de estacionamiento de un vehículo | N/A | 200 OK |
+
+### Métodos HTTP y respuestas
+
+- **GET:** consulta información.
+- **POST:** crea un registro.
+- **PATCH:** actualiza parcialmente un registro.
+- **DELETE:** elimina un registro cuando las reglas lo permiten.
+- **200 OK:** operación realizada correctamente.
+- **201 Created:** recurso creado.
+- **204 No Content:** operación realizada sin contenido de respuesta.
+
+Los códigos y payloads representan el diseño propuesto de los endpoints; deberán verificarse durante la implementación y las pruebas.
+
+## 🛠️ Stack tecnológico propuesto
+
+| Componente | Tecnología | Uso |
+|---|---|---|
+| Backend | C# y ASP.NET Core | Lógica de negocio y API REST |
+| Acceso a datos | Entity Framework Core | Acceso y operaciones con la base de datos |
+| Base de datos | MySQL | Almacenamiento de usuarios, vehículos, espacios y registros |
+| Frontend | HTML5, CSS3 y JavaScript | Interfaz de usuario |
+| Framework de interfaz | Bootstrap | Diseño responsive |
+| Documentación de API | Swagger | Documentación y consulta de endpoints |
+| Pruebas de API | Postman | Pruebas de solicitudes y respuestas HTTP |
+| Control de versiones | Git y GitHub | Gestión del código fuente y trabajo en equipo |
+| Despliegue previsto | Render o Railway | Opciones consideradas para publicar el sistema |
+
+Las tecnologías y herramientas anteriores corresponden a la propuesta documentada del proyecto; no implican que todos los componentes estén implementados actualmente.
+
+##  Roadmap / Próximos pasos
+
+1. Configurar el entorno de desarrollo.
+2. Definir e implementar el modelo de datos en MySQL.
+3. Desarrollar la API REST con ASP.NET Core.
+4. Implementar los módulos de autenticación, gestión de vehículos y espacios, y cálculo de tiempo y cobro.
+5. Desarrollar la interfaz web responsive.
+6. Documentar y probar los endpoints con Swagger y Postman.
+7. Verificar la autenticación, los roles, el rate limiting y el cálculo de tarifas.
+8. Preparar las evidencias de pruebas y la presentación final.
+
+##  Enlaces del proyecto
+
+- **Repositorio GitHub:** [ZonaPark](https://github.com/foreroesteban93-cell/zona-park-fastapi)
+- **Video de presentación:** falta link
+
+
+---
+
+**Proyecto formativo ADSO-CTMA**
+
