@@ -1,7 +1,7 @@
-# 🚀 ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos
+#  ZonaPark — Sistema Inteligente de Gestión y Administración de Parqueaderos
 
 
-## 📖 Descripción del proyecto
+##  Descripción del proyecto
 
 ZonaPark es un sistema web diseñado para facilitar la gestión y administración de parqueaderos. Permite registrar vehículos, controlar los espacios disponibles y ocupados, registrar entradas y salidas, calcular el tiempo de estacionamiento y determinar el valor a pagar.
 
@@ -9,11 +9,11 @@ El proyecto busca reducir los errores de los registros manuales, agilizar la ate
 
 Está dirigido a administradores, empleados y clientes. Entre las funcionalidades contempladas se encuentran la autenticación de usuarios, la gestión de vehículos y espacios, el cálculo de tarifas, el historial de estacionamiento y la generación de reportes.
 
-## 🎥 Video de presentación
+##  Video de presentación
 
-**Enlace al video (máximo 5 minutos):** falta link
+ falta link
 
-> Reemplazar el enlace cuando el video esté publicado y tenga permisos de visualización.
+
 
 ## 👥 Equipo de desarrollo
 
