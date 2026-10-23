@@ -11,8 +11,7 @@ Está dirigido a administradores, empleados y clientes. Entre las funcionalidade
 
 ##  Video de presentación
 
- falta link
-
+Link: https://www.youtube.com/watch?v=WLEybjnGAeM
 
 
 ## 👥 Equipo de desarrollo
@@ -182,7 +181,7 @@ Las tecnologías y herramientas anteriores corresponden a la propuesta documenta
 ##  Enlaces del proyecto
 
 - **Repositorio GitHub:** [ZonaPark](https://github.com/foreroesteban93-cell/zona-park-fastapi)
-- **Video de presentación:** falta link
+- **Video de presentación:** (YouTube) (https://www.youtube.com/watch?v=WLEybjnGAeM)
 
 
 ---
