@@ -6,41 +6,50 @@ from sqlmodel import Field, SQLModel
 # ==========================================
 # 1. Base Común
 # ==========================================
-class ParkingSpaceBase(SQLModel):
-    """Atributos comunes de una celda del parqueadero."""
+class ParkingSessionBase(SQLModel):
+    """Datos que se piden al registrar la entrada de un vehículo."""
 
-    code: str = Field(
-        min_length=2,
-        max_length=10,
-        unique=True,
+    vehicle_id: int = Field(
+        foreign_key="vehicles.id",
         index=True,
-        description="Código de la celda (único), ej: A-01",
+        description="Vehículo que ingresa al parqueadero",
     )
-    vehicle_type: str = Field(
-        max_length=20,
-        description="Tipo de vehículo que admite: carro, moto o bicicleta",
+    space_id: int = Field(
+        foreign_key="parking_spaces.id",
+        description="Celda asignada al vehículo",
     )
-    floor: int = Field(
-        default=1,
-        ge=0,
-        le=20,
-        description="Piso o nivel donde está la celda",
-    )
-    is_available: bool = Field(
-        default=True,
-        description="True si la celda está libre, False si está ocupada",
+    rate_id: int = Field(
+        foreign_key="rates.id",
+        description="Tarifa aplicada a esta sesión",
     )
 
 
 # ==========================================
 # 2. Tabla de Base de Datos
 # ==========================================
-class ParkingSpace(ParkingSpaceBase, table=True):
-    """Tabla física de celdas."""
+class ParkingSession(ParkingSessionBase, table=True):
+    """Tabla física de sesiones (tickets) de parqueo."""
 
-    __tablename__ = "parking_spaces"
+    __tablename__ = "parking_sessions"
 
     id: int | None = Field(default=None, primary_key=True)
+    entry_time: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
+    exit_time: datetime | None = Field(
+        default=None,
+        description="Se llena al registrar la salida",
+    )
+    total_amount: int | None = Field(
+        default=None,
+        ge=0,
+        description="Total a pagar en COP, se calcula al salir",
+    )
+    is_active: bool = Field(
+        default=True,
+        description="True mientras el vehículo siga dentro",
+    )
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
@@ -54,24 +63,29 @@ class ParkingSpace(ParkingSpaceBase, table=True):
 # ==========================================
 # 3. DTOs de la API
 # ==========================================
-class ParkingSpaceCreate(ParkingSpaceBase):
-    """Datos requeridos para crear una celda (POST)."""
+class ParkingSessionCreate(ParkingSessionBase):
+    """Registrar entrada de un vehículo (POST)."""
 
     pass
 
 
-class ParkingSpaceUpdate(SQLModel):
-    """Datos para editar una celda (PATCH, todo opcional)."""
+class ParkingSessionUpdate(SQLModel):
+    """Editar o cerrar una sesión (PATCH, todo opcional)."""
 
-    code: str | None = Field(default=None, min_length=2, max_length=10)
-    vehicle_type: str | None = Field(default=None, max_length=20)
-    floor: int | None = Field(default=None, ge=0, le=20)
-    is_available: bool | None = Field(default=None)
+    space_id: int | None = Field(default=None)
+    rate_id: int | None = Field(default=None)
+    exit_time: datetime | None = Field(default=None)
+    total_amount: int | None = Field(default=None, ge=0)
+    is_active: bool | None = Field(default=None)
 
 
-class ParkingSpacePublic(ParkingSpaceBase):
+class ParkingSessionPublic(ParkingSessionBase):
     """Datos que la API devuelve al cliente (GET)."""
 
     id: int
+    entry_time: datetime
+    exit_time: datetime | None
+    total_amount: int | None
+    is_active: bool
     created_at: datetime
     updated_at: datetime
