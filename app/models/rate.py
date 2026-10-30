@@ -1,6 +1,11 @@
-from datetime import datetime, timezone
 
-from sqlmodel import Field, SQLModel
+from datetime import datetime, timezone
+from typing import TYPE_CHECKING
+
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.parking_session import ParkingSession
 
 
 # ==========================================
@@ -43,13 +48,20 @@ class Rate(RateBase, table=True):
     __tablename__ = "rates"
 
     id: int | None = Field(default=None, primary_key=True)
+
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+
     updated_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
+    )
+
+    # Relación 1:N -> una tarifa puede tener muchas sesiones de parqueo
+    sessions: list["ParkingSession"] = Relationship(
+        back_populates="rate"
     )
 
 
