@@ -1,6 +1,11 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING, Optional
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.customer import Customer
+    from app.models.parking_session import ParkingSession
 
 
 # ==========================================
@@ -54,6 +59,11 @@ class Vehicle(VehicleBase, table=True):
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+
+    # Lado "muchos" -> cada vehículo pertenece a un cliente (opcional)
+    customer: Optional["Customer"] = Relationship(back_populates="vehicles")
+    # Lado "1" -> un vehículo tiene muchas sesiones de parqueo
+    sessions: list["ParkingSession"] = Relationship(back_populates="vehicle")
 
 
 # ==========================================

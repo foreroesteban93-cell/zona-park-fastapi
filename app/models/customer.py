@@ -1,6 +1,10 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.vehicle import Vehicle
 
 
 # ==========================================
@@ -51,6 +55,9 @@ class Customer(CustomerBase, table=True):
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+
+    # Relación 1:N -> un cliente tiene muchos vehículos
+    vehicles: list["Vehicle"] = Relationship(back_populates="customer")
 
 
 # ==========================================
