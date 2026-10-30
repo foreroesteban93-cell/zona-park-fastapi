@@ -1,6 +1,10 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.parking_session import ParkingSession
 
 
 # ==========================================
@@ -49,6 +53,9 @@ class ParkingSpace(ParkingSpaceBase, table=True):
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+
+    # Relación 1:N -> una celda tiene muchas sesiones de parqueo
+    sessions: list["ParkingSession"] = Relationship(back_populates="space")
 
 
 # ==========================================
