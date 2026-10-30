@@ -1,6 +1,12 @@
 from datetime import datetime, timezone
+from typing import TYPE_CHECKING
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+if TYPE_CHECKING:
+    from app.models.vehicle import Vehicle
+    from app.models.parking_space import ParkingSpace
+    from app.models.rate import Rate
 
 
 # ==========================================
@@ -33,6 +39,7 @@ class ParkingSession(ParkingSessionBase, table=True):
     __tablename__ = "parking_sessions"
 
     id: int | None = Field(default=None, primary_key=True)
+
     entry_time: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
@@ -57,6 +64,18 @@ class ParkingSession(ParkingSessionBase, table=True):
     updated_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc),
         nullable=False,
+    )
+
+    # Relaciones N:1 -> cada sesión pertenece a un vehículo,
+    # una celda y una tarifa.
+    vehicle: "Vehicle" = Relationship(
+        back_populates="sessions"
+    )
+    space: "ParkingSpace" = Relationship(
+        back_populates="sessions"
+    )
+    rate: "Rate" = Relationship(
+        back_populates="sessions"
     )
 
 
