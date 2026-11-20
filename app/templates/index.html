@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZonaPark | Administración</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>Zona<span>Park</span></h1>
+                <p>Sistema de parqueadero</p>
+            </div>
+
+            <nav class="navigation">
+                <button class="nav-button active" data-section="dashboard">
+                    <span>⌂</span> Inicio
+                </button>
+                <button class="nav-button" data-section="customers">
+                    <span>♙</span> Clientes
+                </button>
+                <button class="nav-button" data-section="vehicles">
+                    <span>🚗</span> Vehículos
+                </button>
+                <button class="nav-button" data-section="parking-spaces">
+                    <span>▦</span> Espacios
+                </button>
+                <button class="nav-button" data-section="rates">
+                    <span>＄</span> Tarifas
+                </button>
+                <button class="nav-button" data-section="parking-sessions">
+                    <span>◷</span> Sesiones
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>ZonaPark API v1.0</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h2 id="page-title">Panel principal</h2>
+                    <p>Administración del sistema ZonaPark</p>
+                </div>
+
+                <div class="connection-status" id="connection-status">
+                    <span class="status-dot"></span>
+                    Comprobando conexión...
+                </div>
+            </header>
+
+            <section id="content">
+
+                <div class="welcome-card">
+                    <div>
+                        <span class="welcome-label">PANEL DE CONTROL</span>
+                        <h2>Bienvenido a ZonaPark</h2>
+                        <p>
+                            Administra tu parqueadero desde un solo lugar.
+                            Controla clientes, vehículos, espacios, tarifas
+                            y sesiones de estacionamiento.
+                        </p>
+                    </div>
+                    <div class="welcome-icon">🅿️</div>
+                </div>
+
+                <div class="section-heading">
+                    <h3>Gestión del parqueadero</h3>
+                    <p>Selecciona un módulo para comenzar.</p>
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <article class="dashboard-card">
+                        <span class="card-icon">♙</span>
+                        <h3>Clientes</h3>
+                        <p>Administra la información de los clientes.</p>
+                        <button class="card-button" data-section="customers">
+                            Administrar →
+                        </button>
+                    </article>
+
+                    <article class="dashboard-card">
+                        <span class="card-icon">🚗</span>
+                        <h3>Vehículos</h3>
+                        <p>Controla los vehículos registrados.</p>
+                        <button class="card-button" data-section="vehicles">
+                            Administrar →
+                        </button>
+                    </article>
+
+                    <article class="dashboard-card">
+                        <span class="card-icon">▦</span>
+                        <h3>Espacios</h3>
+                        <p>Consulta y administra los espacios disponibles.</p>
+                        <button class="card-button" data-section="parking-spaces">
+                            Administrar →
+                        </button>
+                    </article>
+
+                    <article class="dashboard-card">
+                        <span class="card-icon">＄</span>
+                        <h3>Tarifas</h3>
+                        <p>Gestiona los precios y tarifas del parqueadero.</p>
+                        <button class="card-button" data-section="rates">
+                            Administrar →
+                        </button>
+                    </article>
+
+                    <article class="dashboard-card">
+                        <span class="card-icon">◷</span>
+                        <h3>Sesiones de parqueo</h3>
+                        <p>Registra entradas, salidas y cobros.</p>
+                        <button class="card-button" data-section="parking-sessions">
+                            Administrar →
+                        </button>
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
